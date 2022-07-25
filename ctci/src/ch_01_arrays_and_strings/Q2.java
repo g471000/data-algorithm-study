@@ -14,13 +14,13 @@ public class Q2 {
         for (int i = 0; i < max; i++) {
             String[] input = q2.createLongPalindrome(i);
 
-            if (!q2.isPalindromeSort(input[0], input[1])) {
+            if (!q2.isPermutationSort(input[0], input[1])) {
                 System.out.println("Map Solution is incorrect!");
             }
         }
 
         for (int i = 0; i < inputs.length; i++) {
-            System.out.print(Arrays.toString(inputs[i]) + " -> " + q2.isPalindromeSort(inputs[i][0], inputs[i][1]) + "\n");
+            System.out.print(Arrays.toString(inputs[i]) + " -> " + q2.isPermutationSort(inputs[i][0], inputs[i][1]) + "\n");
         }
         long endTime = System.currentTimeMillis();
         long duration = endTime - startTime;
@@ -29,12 +29,12 @@ public class Q2 {
         startTime = System.currentTimeMillis();
         for (int i = 0; i < max; i++) {
             String[] input = q2.createLongPalindrome(i);
-            if (!q2.isPalindromeMap(input[0], input[1])) {
+            if (!q2.isPermutationMap(input[0], input[1])) {
                 System.out.println("Map Solution is incorrect!");
             }
         }
         for (int i = 0; i < inputs.length; i++) {
-            System.out.print(Arrays.toString(inputs[i]) + " -> " + q2.isPalindromeMap(inputs[i][0], inputs[i][1]) + "\n");
+            System.out.print(Arrays.toString(inputs[i]) + " -> " + q2.isPermutationMap(inputs[i][0], inputs[i][1]) + "\n");
         }
         endTime = System.currentTimeMillis();
         duration = endTime - startTime;
@@ -43,19 +43,21 @@ public class Q2 {
         startTime = System.currentTimeMillis();
         for (int i = 0; i < max; i++) {
             String[] input = q2.createLongPalindrome(i);
-            if (!q2.isPalindromeAscii(input[0], input[1])) {
+            if (!q2.isPermutationAscii(input[0], input[1])) {
                 System.out.println("ASCII Solution is incorrect!");
             }
         }
         for (int i = 0; i < inputs.length; i++) {
-            System.out.print(Arrays.toString(inputs[i]) + " -> " + q2.isPalindromeAscii(inputs[i][0], inputs[i][1]) + "\n");
+            System.out.print(Arrays.toString(inputs[i]) + " -> " + q2.isPermutationAscii(inputs[i][0], inputs[i][1]) + "\n");
         }
         endTime = System.currentTimeMillis();
         duration = endTime - startTime;
         System.out.printf("ASCII solution: %d secs\n", duration);
     }
 
-    public boolean isPalindromeSort(String s1, String s2) {
+    // Time: O(NlogN) -> sorting
+    // Space: O(N) -> char arrays
+    public boolean isPermutationSort(String s1, String s2) {
         if (s1.length() != s2.length()) {
             return false;
         }
@@ -69,7 +71,9 @@ public class Q2 {
         return String.valueOf(c1).equals(String.valueOf(c2));
     }
 
-    public boolean isPalindromeMap(String s1, String s2) {
+    // Time: O(N) -> loop
+    // Space: O(N) -> Map
+    public boolean isPermutationMap(String s1, String s2) {
         if (s1.length() != s2.length()) {
             return false;
         }
@@ -97,7 +101,9 @@ public class Q2 {
         return true;
     }
 
-    public boolean isPalindromeAscii(String s1, String s2) {
+    // Time: O(N) -> loop
+    // Space: O(1) -> integer array is size of 128
+    public boolean isPermutationAscii(String s1, String s2) {
         if (s1.length() != s2.length()) {
             return false;
         }
