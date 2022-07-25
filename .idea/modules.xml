@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/ctci/ctci.iml" filepath="$PROJECT_DIR$/ctci/ctci.iml" />
       <module fileurl="file://$PROJECT_DIR$/data-algorithm-study.iml" filepath="$PROJECT_DIR$/data-algorithm-study.iml" />
     </modules>
   </component>
