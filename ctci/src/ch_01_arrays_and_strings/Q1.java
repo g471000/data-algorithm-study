@@ -47,6 +47,8 @@ public class Q1 {
         System.out.println();
     }
 
+    // Time Complexity: O(N)
+    // Space Complexity: O(N)
     public boolean isUniqueHashSet(String s){
         HashSet<Character> set = new HashSet<>();
         for (char c : s.toCharArray()) {
@@ -58,6 +60,8 @@ public class Q1 {
         return true;
     }
 
+    // Time Complexity: O(NlogN)
+    // Space Complexity: O(1)
     public boolean isUniqueSort(String s) {
         if (s.length() < 2) {
             return true;
@@ -72,6 +76,8 @@ public class Q1 {
         return true;
     }
 
+    // Time Complexity: O(N)
+    // Space Complexity: O(1)
     public boolean isUniqueAscii(String s) {
         int[] checker = new int[128];
         for (char c : s.toCharArray()) {
