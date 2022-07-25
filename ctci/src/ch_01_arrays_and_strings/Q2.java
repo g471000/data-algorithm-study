@@ -7,7 +7,7 @@ import java.util.Random;
 public class Q2 {
     public static void main(String[] args) {
         Q2 q2 = new Q2();
-        String[][] inputs = {{"", ""}, {"abc", "ac"}, {"abcded", "dabced"}};
+        String[][] inputs = {{"", ""}, {"abc", "ac"}, {"abcded", "dabced"}, {"abcdef", "abcdeg"}};
         int max = 1_000;
 
         long startTime = System.currentTimeMillis();
@@ -18,29 +18,37 @@ public class Q2 {
                 System.out.println("Map Solution is incorrect!");
             }
         }
+
+        for (int i = 0; i < inputs.length; i++) {
+            System.out.print(Arrays.toString(inputs[i]) + " -> " + q2.isPalindromeSort(inputs[i][0], inputs[i][1]) + "\n");
+        }
         long endTime = System.currentTimeMillis();
         long duration = endTime - startTime;
-        System.out.printf("Sort solution: %d secs\n", duration);
+        System.out.printf("Sort solution: %d secs\n\n", duration);
 
         startTime = System.currentTimeMillis();
         for (int i = 0; i < max; i++) {
             String[] input = q2.createLongPalindrome(i);
-            startTime = System.currentTimeMillis();
             if (!q2.isPalindromeMap(input[0], input[1])) {
                 System.out.println("Map Solution is incorrect!");
             }
         }
+        for (int i = 0; i < inputs.length; i++) {
+            System.out.print(Arrays.toString(inputs[i]) + " -> " + q2.isPalindromeMap(inputs[i][0], inputs[i][1]) + "\n");
+        }
         endTime = System.currentTimeMillis();
         duration = endTime - startTime;
-        System.out.printf("Map solution: %d secs\n", duration);
+        System.out.printf("Map solution: %d secs\n\n", duration);
 
         startTime = System.currentTimeMillis();
         for (int i = 0; i < max; i++) {
             String[] input = q2.createLongPalindrome(i);
-            startTime = System.currentTimeMillis();
             if (!q2.isPalindromeAscii(input[0], input[1])) {
                 System.out.println("ASCII Solution is incorrect!");
             }
+        }
+        for (int i = 0; i < inputs.length; i++) {
+            System.out.print(Arrays.toString(inputs[i]) + " -> " + q2.isPalindromeAscii(inputs[i][0], inputs[i][1]) + "\n");
         }
         endTime = System.currentTimeMillis();
         duration = endTime - startTime;
@@ -90,6 +98,12 @@ public class Q2 {
     }
 
     public boolean isPalindromeAscii(String s1, String s2) {
+        if (s1.length() != s2.length()) {
+            return false;
+        }
+        if (s1.equals(s2)) {
+            return true;
+        }
         int[] checker = new int[128];
         for (int i = 0; i < s1.length(); i++) {
             checker[s1.charAt(i)]++;
