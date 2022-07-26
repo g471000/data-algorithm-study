@@ -10,6 +10,8 @@ public class Q4 {
         }
     }
 
+    // Time: O(N)
+    // Space: O(1)
     public boolean isPalindrome(String s) {
         s = s.toLowerCase();
         int left = 0;
