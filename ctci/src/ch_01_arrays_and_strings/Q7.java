@@ -21,10 +21,7 @@ public class Q7 {
         int end = size - 1;
         for (int j = 0; j < size / 2; j++) {
             for (int i = j; i < end - j; i++) {
-                result[i][end] = array[j][i];
-                result[end][end -i] = array[i][end];
-                result[end - i][j] = array[end][end - i];
-                result[start + j][i + j] = array[end - i][j];
+                int temp = array[start + j][i + j];
             }
         }
         return result;
