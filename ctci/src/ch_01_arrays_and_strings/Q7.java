@@ -15,16 +15,20 @@ public class Q7 {
     }
 
     public int[][] rotate2DArray(int[][] array) {
-        int size = array.length;
-        int[][] result = new int[size][size];
-        int start = 0;
-        int end = size - 1;
-        for (int j = 0; j < size / 2; j++) {
-            for (int i = j; i < end - j; i++) {
-                int temp = array[start + j][i + j];
+        int len = array.length;
+        for (int layer = 0; layer < len / 2; layer++) {
+            int first = layer;
+            int last = len - 1 - layer;
+            for (int i = first; i < last; i++) {
+               int offset = i - first;
+                int top = array[first][i];
+                array[first][i] = array[last - offset][first];
+                array[last - offset][first] = array[last][last - offset];
+                array[last][last - offset] = array[i][last];
+                array[i][last] = top;
             }
         }
-        return result;
+        return array;
     }
 
     private int[][] createNxN(int size) {

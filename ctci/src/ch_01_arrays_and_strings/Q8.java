@@ -32,13 +32,13 @@ public class Q8 {
             }
         }
 
-        for (int row = 0; row < array.length; row++) {
+        for (int row = 1; row < array.length; row++) {
             if(array[row][0] == 0){
                 setRowZero(array, row);
             }
         }
 
-        for (int col = 0; col < array[0].length; col++) {
+        for (int col = 1; col < array[0].length; col++) {
             if (array[0][col] == 0) {
                 setColZero(array, col);
             }
