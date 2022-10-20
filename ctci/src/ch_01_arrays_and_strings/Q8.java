@@ -17,9 +17,23 @@ public class Q8 {
     }
 
     public int[][] setAsZero(int[][] array) {
+        boolean rowHasZero = false;
+        boolean colHasZero = false;
+
         if (array.length < 1) {
             return array;
         }
+
+        for (int i = 0; i < array.length; i++) {
+            if (array[0][i] == 0) {
+                rowHasZero = true;
+            }
+
+            if (array[i][0] == 0) {
+                colHasZero = true;
+            }
+        }
+
         for (int row = 1; row < array.length; row++) {
             for (int col = 1; col < array[0].length; col++) {
                 if (array[row][col] == 0) {
@@ -43,9 +57,6 @@ public class Q8 {
                 setColZero(array, col);
             }
         }
-
-
-
         return array;
     }
 

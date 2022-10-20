@@ -81,7 +81,7 @@ public class Q1 {
     public boolean isUniqueAscii(String s) {
         int[] checker = new int[128];
         for (char c : s.toCharArray()) {
-            if (checker[(int) c]++ > 0) {
+            if (checker[c]++ > 0) {
                 return false;
             }
         }
