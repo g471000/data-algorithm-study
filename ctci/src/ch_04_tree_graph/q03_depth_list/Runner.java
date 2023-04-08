@@ -1,5 +1,8 @@
 package ch_04_tree_graph.q03_depth_list;
 
+import java.util.ArrayList;
+import java.util.LinkedList;
+
 public class Runner {
     public static void main(String[] args) {
         DepthList dl = new DepthList();
@@ -12,5 +15,7 @@ public class Runner {
         dl.add(5);
         dl.add(7);
         System.out.println(dl);
+        ArrayList<LinkedList<DepthList.Node>> lists = dl.createLinkedList();
+        System.out.println(dl.printLinkedList());
     }
 }
