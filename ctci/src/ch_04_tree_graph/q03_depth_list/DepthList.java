@@ -26,12 +26,6 @@ public class DepthList {
         return root.toString();
     }
 
-//    public void createLinkedList() {
-//        if (root != null) {
-//            root = createLinkedList(root);
-//        }
-//    }
-
     public void createLinkedList(Node root, ArrayList<LinkedList<Node>> lists, int level) {
         if (root == null) {
             return;
