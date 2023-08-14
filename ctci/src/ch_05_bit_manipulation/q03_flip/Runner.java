@@ -8,6 +8,33 @@ public class Runner {
         System.out.println(input);
         System.out.println(FindMaxLengthByFlipABitBFS(1775));
         System.out.println(FindMaxLengthByFlipABitOneLoop(1775));
+        System.out.println(FindMaxLengthByFlipABit(1775));
+    }
+
+
+    public static int FindMaxLengthByFlipABit(int input) {
+
+        // ~ 을 하면 모든 bit를 뒤집는다. 만약 모두가 1이면, 32를 리턴한다.
+        if (~input == 0) {
+            return Integer.BYTES * 8;
+        }
+
+        int currLen = 0;
+        int prevLen = 0;
+        int maxLen = 1;
+
+        while(input != 0){
+            if((input & 1) == 1){
+                // current last bit is 1
+                currLen++;
+            } else if ((input & 1) == 0){
+                prevLen = (input & 2) == 0 ? 0 : currLen;
+                currLen = 0;
+            }
+            maxLen = Math.max(prevLen + currLen + 1, maxLen);
+            input >>>= 1;
+        }
+        return maxLen;
     }
 
     /**
@@ -16,6 +43,11 @@ public class Runner {
      * @return max length after flip a bit
      */
     public static int FindMaxLengthByFlipABitOneLoop(int input) {
+        // ~ 을 하면 모든 bit를 뒤집는다. 만약 모두가 1이면, 32를 리턴한다.
+        if (~input == 0) {
+            return Integer.BYTES * 8;
+        }
+
         String binaryString = Integer.toBinaryString(input);
         int binLen = binaryString.length();
         ArrayList<Integer> lenList = new ArrayList<>();
@@ -38,7 +70,7 @@ public class Runner {
         int maxLength = 0;
         int left = 0, right = 1;
         while (right < lenList.size()) {
-            maxLength = Math.max(maxLength, lenList.get(left) + lenList.get(right));
+            maxLength = Math.max(maxLength, lenList.get(left) + lenList.get(right) + 1);
             left++;
             right++;
         }
@@ -52,6 +84,12 @@ public class Runner {
      * @return max length after flip a bit
      */
     public static int FindMaxLengthByFlipABitBFS(int input) {
+        // ~ 을 하면 모든 bit를 뒤집는다. 만약 모두가 1이면, 32를 리턴한다.
+        if (~input == 0) {
+            return Integer.BYTES * 8;
+        }
+
+
         String binaryString = Integer.toBinaryString(input);
         int binLen = binaryString.length();
         if (binaryString.length() < 2) {
@@ -69,11 +107,11 @@ public class Runner {
 
         while (left < binLen) {
             if (right == binLen - 1) {
-                maxLength = Math.max(maxLength, right - left);
+                maxLength = Math.max(maxLength, right - left + 1);
                 break;
             } else if (binaryString.charAt(right) == '0') {
                 if (hasMetZero) {
-                    maxLength = Math.max(maxLength, right - left);
+                    maxLength = Math.max(maxLength, right - left + 1);
                     left = zeroIndex + 1;
                     right = left;
                     hasMetZero = false;
