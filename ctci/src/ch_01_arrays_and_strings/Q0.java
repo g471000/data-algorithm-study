@@ -18,6 +18,7 @@ public class Q0 {
         System.out.println(q0.hasNoDuplicate3(""));
     }
 
+
     // O(N)
     // Space O(N)
     public boolean hasNoDuplicate(String s) {
