@@ -11,7 +11,8 @@ public class Q1 {
 
         Q1 q1 = new Q1();
 //        Node removedDup = q1.removeDuplicate(head);
-        Node removedDup = q1.removeDup(head);
+//        Node removedDup = q1.removeDup(head);
+        Node removedDup = q1.removeDupNoSet(head);
         System.out.println("removed: " + removedDup.toString());
 
         System.out.println();
@@ -19,7 +20,8 @@ public class Q1 {
         System.out.println(head2.toString());
 
 //        removedDup = q1.removeDuplicate(head2);
-        removedDup = q1.removeDup(head2);
+//        removedDup = q1.removeDup(head2);
+        removedDup = q1.removeDupNoSet(head2);
         System.out.println(removedDup.toString());
     }
 
@@ -43,15 +45,26 @@ public class Q1 {
         return node;
     }
 
+    public Node removeDupNoSet(Node head){
+        if(head == null){
+            return null;
+        }
 
+        Node curr = head;
+        while(curr != null){
+            Node runner = curr;
+            while(runner.next != null){
+                if(curr.val == runner.next.val){
+                    runner.next = runner.next.next;
+                } else {
+                    runner = runner.next;
+                }
+            }
+            curr = curr.next;
+        }
 
-
-
-
-
-
-
-
+        return head;
+    }
 
     public Node removeDuplicate(Node node) {
         if (node == null) {
